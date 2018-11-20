@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cvBank.iml" filepath="$PROJECT_DIR$/.idea/modules/cvBank.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cvBank_main.iml" filepath="$PROJECT_DIR$/.idea/modules/cvBank_main.iml" group="cvBank" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cvBank_test.iml" filepath="$PROJECT_DIR$/.idea/modules/cvBank_test.iml" group="cvBank" />
+    </modules>
+  </component>
+</project>
