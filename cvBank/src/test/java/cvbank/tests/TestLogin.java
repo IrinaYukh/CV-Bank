@@ -8,6 +8,14 @@ import org.testng.annotations.Test;
 
 public class TestLogin extends TestBase
 {
+    @BeforeMethod
+    public void precondition()
+    {
+        if(! app.getSessionHelper().isLoggedOut())
+        {
+            app.getSessionHelper().logout();
+        }
+    }
 
     @Test
     public void candidateLoginPositiveTest() throws InterruptedException {
@@ -15,8 +23,6 @@ public class TestLogin extends TestBase
         Thread.sleep(5000);
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),'brownDav2@gmail.com')]")));
-
-        app.getSessionHelper().logout();
     }
 
     @Test
@@ -25,8 +31,6 @@ public class TestLogin extends TestBase
         Thread.sleep(2000);
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),'hr1@yandex.com')]")));
-
-        app.getSessionHelper().logout();
     }
 //    @Test
 //    public void loginNegativeTest() throws InterruptedException {
@@ -43,7 +47,14 @@ public class TestLogin extends TestBase
 //        Assert.assertTrue(app.getSessionHelper().isElementPresent(By.cssSelector("div.user-main-info")));
 //    }
 
-
+    @AfterMethod
+    public void postcondition()
+    {
+        if(! app.getSessionHelper().isLoggedOut())
+        {
+            app.getSessionHelper().logout();
+        }
+    }
 
 
 

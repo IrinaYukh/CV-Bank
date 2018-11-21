@@ -24,6 +24,11 @@ public class CompanyHelper extends HelperBase
         click(By.xpath("//div[@class='right-heading']//h2"));
     }
 
+    public void selectHR_registration()
+    {
+        click(By.xpath("//div[@class='right-heading']//h2"));
+    }
+
     public void fillCandidateForm(CompanyData hr)
     {
         type(By.xpath("//input[@id='companyName']"),hr.getCompany());
@@ -73,9 +78,8 @@ public class CompanyHelper extends HelperBase
                                 String phone, String firstName, String lastName,
                                 String position, String email, String password, String confirmPass)
     {
-        clickLoginButton();
         clickCreateFromLogin();
-        initHRCreation();
+        selectHR_registration();
         fillCandidateForm(new CompanyData().setCompany(company)
                 .setWebsite(website)
                 .setCountry(country)

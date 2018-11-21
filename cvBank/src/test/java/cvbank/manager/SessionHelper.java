@@ -43,8 +43,8 @@ public class SessionHelper extends HelperBase
 
 
 
-//    public boolean isLoggedIn()
-//    {
-//        return isElementPresent(By.cssSelector("div.user-main-info"));
-//    }
+    public boolean isLoggedOut()
+    {
+        return isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),'Log in')]"));
+    }
 }
