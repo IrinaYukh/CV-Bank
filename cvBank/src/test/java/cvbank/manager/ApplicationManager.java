@@ -14,6 +14,7 @@ public class ApplicationManager
     SessionHelper sessionHelper;
     CandidateHelper candidateHelper;
     SelectTest selectTest;
+    ResumeHelper resumeHelper;
 
     private EventFiringWebDriver wd;
     private String browser;
@@ -45,6 +46,7 @@ public class ApplicationManager
         candidateHelper = new CandidateHelper(wd);
         companyHelper = new CompanyHelper(wd);
         selectTest = new SelectTest(wd);
+        resumeHelper = new ResumeHelper(wd);
     }
 
     public void stop() {
@@ -68,6 +70,11 @@ public class ApplicationManager
 
     public CompanyHelper getCompanyHelper() {
         return companyHelper;
+    }
+
+    public ResumeHelper getResumeHelper()
+    {
+        return resumeHelper;
     }
 
 }
