@@ -5,47 +5,49 @@ import org.testng.annotations.Test;
 
 public class TestResume extends TestBase
 {
+    //ResumeHelper helper = app.getResumeHelper();
+
     @Test
     public void createCV() throws InterruptedException
     {
 
         app.getResumeHelper().clickCreateCV_button();
-        Thread.sleep(5000);
+        Thread.sleep(500);
         app.getResumeHelper().openAll_CV_fields();
-        Thread.sleep(1000);
+        Thread.sleep(500);
 
-        app.getResumeHelper().createTitle("resume","Sara","Filder","adfa","qwerty");
-        Thread.sleep(5000);
+        app.getResumeHelper().createTitle("resume","Sara","Filder","02022000","adfa","qwerty");
+        Thread.sleep(500);
         app.getResumeHelper().createContactInfo("+972 53 1000000", "sarafild@yandex.ru","Jerusalem, Israel");
-        Thread.sleep(5000);
+        Thread.sleep(500);
         app.getResumeHelper().createDescription("Center","Developer","1000","5000");
-        Thread.sleep(5000);
+        Thread.sleep(500);
         app.getResumeHelper().createEducation("Harvard","BA","1985","qwerty");
-        Thread.sleep(5000);
+        Thread.sleep(500);
 
         app.getResumeHelper().selectSkill("Java");
         app.getResumeHelper().selectSkill("PHP");
-        Thread.sleep(5000);
+        Thread.sleep(500);
 
         app.getResumeHelper().createJob("Monday","Developer","2010","2017","qwerty");
-        Thread.sleep(5000);
+        Thread.sleep(500);
         app.getResumeHelper().createAchievement("qwerty","2005");
-        Thread.sleep(5000);
+        Thread.sleep(500);
         app.getResumeHelper().createCertification("qwerty","2016");
-        Thread.sleep(5000);
+        Thread.sleep(500);
 
         app.getResumeHelper().selectLanguage("English","1");
         app.getResumeHelper().addLanguage();
         app.getResumeHelper().selectLanguage("Hebrew","2");
-        Thread.sleep(5000);
+        Thread.sleep(500);
 
         app.getResumeHelper().createFooterLinks("aasgsfg","asfgasgsf","asfgag");
-        Thread.sleep(5000);
+        Thread.sleep(500);
         app.getResumeHelper().createFooterInfo("dhadah");
-        Thread.sleep(5000);
+        Thread.sleep(500);
 
         app.getResumeHelper().submitCV_creation();
-        Thread.sleep(1000);
+        Thread.sleep(500);
     }
 
     @Test

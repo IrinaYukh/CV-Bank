@@ -21,7 +21,8 @@ public class ResumeHelper extends HelperBase
         type(By.xpath("//input[@placeholder='cv title*']"), resume.getCvTitle());
         type(By.xpath("//input[@placeholder='first name*']"), resume.getFirstName());
         type(By.xpath("//input[@placeholder='last name*']"), resume.getLastName());
-     //   type(By.name("birthday"), resume.getBirthday());
+        type2(By.xpath("//input[@placeholder='birthday']"),resume.getBirthday(),false);
+        //type2(By.name("birthday"), resume.getBirthday(),false);
         type(By.xpath("//textarea[@id='summary']"), resume.getSummary());
         type(By.xpath("//textarea[@id='about']"), resume.getAbout());
     }
@@ -79,11 +80,10 @@ public class ResumeHelper extends HelperBase
     }
 
 
-    public void createTitle(String cvTitle, String firstName, String lastName, String summary
-        , String about)
+    public void createTitle(String cvTitle, String firstName, String lastName, String birthday, String summary, String about)
     {
         fillTitle(new ResumeData().setCvTitle(cvTitle).setFirstName(firstName).setLastName(lastName)
-                .setSummary(summary).setAbout(about));
+                .setBirthday(birthday).setSummary(summary).setAbout(about));
     }
 
     public void createContactInfo(String phone, String email, String residence)
@@ -160,6 +160,11 @@ public class ResumeHelper extends HelperBase
     public void selectSkill(String skills)
     {
         click(By.xpath("//div[@id='skill-list']//u[contains(text(),'" + skills + "')]"));
+    }
+
+    public void enterBirthday(final String birthday)
+    {
+        click(By.xpath("//input[@name='birthday'][@ng-reflect-model='" + birthday + "']"));
     }
 
 }

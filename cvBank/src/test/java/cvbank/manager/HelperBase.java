@@ -28,6 +28,16 @@ public class HelperBase
         }
     }
 
+    public void type2(By locator, String text, Boolean clear) {
+        if (text != null) {
+            click(locator);
+            if (clear) {
+                wd.findElement(locator).clear();
+            }
+            wd.findElement(locator).sendKeys(text);
+        }
+    }
+
     public boolean isElementPresent(By locator) {
         try {
             wd.findElement(locator);
