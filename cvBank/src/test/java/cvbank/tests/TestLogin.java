@@ -20,7 +20,7 @@ public class TestLogin extends TestBase
     @Test
     public void candidateLoginPositiveTest() throws InterruptedException {
         app.getSessionHelper().loginUser("brownDav2@gmail.com","browndav2");
-        Thread.sleep(5000);
+
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),'brownDav2@gmail.com')]")));
     }
@@ -28,7 +28,7 @@ public class TestLogin extends TestBase
     @Test
     public void HRLoginPositiveTest() throws InterruptedException {
         app.getSessionHelper().loginUser("hr1@yandex.com","hrtest1235");
-        Thread.sleep(2000);
+
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),'hr1@yandex.com')]")));
     }

@@ -30,15 +30,12 @@ public class TestRegistration extends TestBase
         app.getCandidateHelper().registerCandidate("Zoi","Brown",email
                 ,"+972 52 1112222", "brownzoi"+ count,"brownzoi"+count);
 
-        Thread.sleep(2000);
         app.getCandidateHelper().submitCandidateForm();
-        Thread.sleep(2000);
         app.getCandidateHelper().clickSuccessMessage();
-        Thread.sleep(2000);
 
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),email)]")));
-        Thread.sleep(2000);
+
     }
 
     @Test
@@ -49,15 +46,12 @@ public class TestRegistration extends TestBase
         app.getSessionHelper().clickLoginButton();
         app.getCandidateHelper().registerCandidateFromLoginForm("Luke","Snow",email
         ,"+972 55 1231234","snowluke"+count,"snowluke"+count);
-        Thread.sleep(2000);
+
         app.getCandidateHelper().submitCandidateForm();
-        Thread.sleep(2000);
         app.getCandidateHelper().clickSuccessMessage();
-        Thread.sleep(2000);
 
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),email)]")));
-        Thread.sleep(2000);
     }
 
     @Test
@@ -69,15 +63,14 @@ public class TestRegistration extends TestBase
         app.getCompanyHelper().registerHR("Career", "career.co.il", "Israel", "Netaniya"
             ,"Leskov", "6", "17532", "+972 55 1199999", "Alexander", "Frou"
             ,"manager", email, "alexander"+count,"alexander"+count);
-        Thread.sleep(2000);
+
         app.getCompanyHelper().submitHRForm();
-        Thread.sleep(2000);
+
         app.getCompanyHelper().clickSuccessMessage();
-        Thread.sleep(2000);
 
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),email)]")));
-        Thread.sleep(2000);
+
     }
 
     @Test
@@ -89,15 +82,13 @@ public class TestRegistration extends TestBase
         app.getCompanyHelper().registerHRFromLoginForm("Sun", "sun.com", "Israel", "Rishon Le Cion"
                 ,"Washington", "12", "17111", "+972 52 3214444", "Lida", "Cohen"
                 ,"HR", email, "lidaCohen"+count,"lidaCohen"+count);
-        Thread.sleep(2000);
+
         app.getCompanyHelper().submitHRForm();
-        Thread.sleep(2000);
         app.getCompanyHelper().clickSuccessMessage();
-        Thread.sleep(3000);
 
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),email)]")));
-        Thread.sleep(2000);
+
     }
 
     @AfterMethod

@@ -5,11 +5,12 @@ import org.testng.annotations.Test;
 
 public class TestResume extends TestBase
 {
-    //ResumeHelper helper = app.getResumeHelper();
+
 
     @Test
     public void createCV() throws InterruptedException
     {
+        //ResumeHelper helper = app.getResumeHelper();
 
         app.getResumeHelper().clickCreateCV_button();
         Thread.sleep(500);
