@@ -1,5 +1,8 @@
 package cvbank.tests;
 
+import cvbank.manager.CandidateHelper;
+import cvbank.manager.CompanyHelper;
+import cvbank.manager.SessionHelper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -22,16 +25,17 @@ public class TestRegistration extends TestBase
     }
 
     @Test
-    public void candidateRegistration() throws InterruptedException {
+    public void candidateRegistration()
+    {
+        CandidateHelper candidate = app.getCandidateHelper();
 
         String email = "brownzoi"+count+"@gmail.com";
 
-        app.getCandidateHelper().initCandidateRegistration();
-        app.getCandidateHelper().registerCandidate("Zoi","Brown",email
-                ,"+972 52 1112222", "brownzoi"+ count,"brownzoi"+count);
-
-        app.getCandidateHelper().submitCandidateForm();
-        app.getCandidateHelper().clickSuccessMessage();
+        candidate.initCandidateRegistration();
+        candidate.registerCandidate("Zoi","Brown",email,"+972 52 1112222"
+                                    ,"brownzoi"+ count,"brownzoi"+count);
+        candidate.submitCandidateForm();
+        candidate.clickSuccessMessage();
 
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),email)]")));
@@ -39,34 +43,37 @@ public class TestRegistration extends TestBase
     }
 
     @Test
-    public void candidateRegister_LoginForm() throws InterruptedException {
+    public void candidateRegister_LoginForm()
+    {
+        CandidateHelper candidate = app.getCandidateHelper();
+        SessionHelper helper = app.getSessionHelper();
 
         String email = "snowluke"+count+"@mail.com";
 
-        app.getSessionHelper().clickLoginButton();
-        app.getCandidateHelper().registerCandidateFromLoginForm("Luke","Snow",email
-        ,"+972 55 1231234","snowluke"+count,"snowluke"+count);
-
-        app.getCandidateHelper().submitCandidateForm();
-        app.getCandidateHelper().clickSuccessMessage();
+        helper.clickLoginButton();
+        candidate.registerCandidateFromLoginForm("Luke","Snow",email,"+972 55 1231234"
+                                                ,"snowluke"+count,"snowluke"+count);
+        candidate.submitCandidateForm();
+        candidate.clickSuccessMessage();
 
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),email)]")));
     }
 
     @Test
-    public void HR_Registration() throws InterruptedException
+    public void HR_Registration()
     {
         String email = "alexandr"+count+"@google.com";
 
-        app.getCompanyHelper().initHRCreation();
-        app.getCompanyHelper().registerHR("Career", "career.co.il", "Israel", "Netaniya"
+        CompanyHelper hr = app.getCompanyHelper();
+
+        hr.initHRCreation();
+        hr.registerHR("Career", "career.co.il", "Israel", "Netaniya"
             ,"Leskov", "6", "17532", "+972 55 1199999", "Alexander", "Frou"
             ,"manager", email, "alexander"+count,"alexander"+count);
 
-        app.getCompanyHelper().submitHRForm();
-
-        app.getCompanyHelper().clickSuccessMessage();
+        hr.submitHRForm();
+        hr.clickSuccessMessage();
 
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),email)]")));
@@ -78,13 +85,15 @@ public class TestRegistration extends TestBase
     {
         String email = "HRlida"+count+"@walla.com";
 
-        app.getSessionHelper().clickLoginButton();
-        app.getCompanyHelper().registerHRFromLoginForm("Sun", "sun.com", "Israel", "Rishon Le Cion"
+        CompanyHelper hr = app.getCompanyHelper();
+        SessionHelper helper = app.getSessionHelper();
+
+        helper.clickLoginButton();
+        hr.registerHRFromLoginForm("Sun", "sun.com", "Israel", "Rishon Le Cion"
                 ,"Washington", "12", "17111", "+972 52 3214444", "Lida", "Cohen"
                 ,"HR", email, "lidaCohen"+count,"lidaCohen"+count);
-
-        app.getCompanyHelper().submitHRForm();
-        app.getCompanyHelper().clickSuccessMessage();
+        hr.submitHRForm();
+        hr.clickSuccessMessage();
 
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),email)]")));

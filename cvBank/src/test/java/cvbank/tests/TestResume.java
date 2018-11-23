@@ -1,5 +1,6 @@
 package cvbank.tests;
 
+import cvbank.manager.ResumeHelper;
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
@@ -8,71 +9,63 @@ public class TestResume extends TestBase
 
 
     @Test
-    public void createCV() throws InterruptedException
+    public void createCV()
     {
-        //ResumeHelper helper = app.getResumeHelper();
+        ResumeHelper resume = app.getResumeHelper();
 
-        app.getResumeHelper().clickCreateCV_button();
+        resume.clickCreateCV_button();
+        resume.openAll_CV_fields();
+        resume.createTitle("resume","Sara","Filder","02022000","adfa","qwerty");
+        resume.createContactInfo("+972 53 1000000", "sarafild@yandex.ru","Jerusalem, Israel");
+        resume.createDescription("Center","Developer","1000","5000");
+        resume.createEducation("Harvard","BA","1985","qwerty");
 
-        app.getResumeHelper().openAll_CV_fields();
 
-        app.getResumeHelper().createTitle("resume","Sara","Filder","02022000","adfa","qwerty");
+        resume.selectSkill("Java");
+        resume.selectSkill("PHP");
 
-        app.getResumeHelper().createContactInfo("+972 53 1000000", "sarafild@yandex.ru","Jerusalem, Israel");
 
-        app.getResumeHelper().createDescription("Center","Developer","1000","5000");
+        resume.createJob("Monday","Developer","2010","2017","qwerty");
+        resume.createAchievement("qwerty","2005");
+        resume.createCertification("qwerty","2016");
 
-        app.getResumeHelper().createEducation("Harvard","BA","1985","qwerty");
 
-        app.getResumeHelper().selectSkill("Java");
-        app.getResumeHelper().selectSkill("PHP");
+        resume.selectLanguage("English","1");
+        resume.addLanguage();
+        resume.selectLanguage("Hebrew","2");
 
-        app.getResumeHelper().createJob("Monday","Developer","2010","2017","qwerty");
 
-        app.getResumeHelper().createAchievement("qwerty","2005");
+        resume.createFooterLinks("aasgsfg","asfgasgsf","asfgag");
+        resume.createFooterInfo("dhadah");
+        resume.submitCV_creation();
+    }
 
-        app.getResumeHelper().createCertification("qwerty","2016");
+    @Test
+    public void selectSkills()
+    {
+        ResumeHelper resume = app.getResumeHelper();
 
-        app.getResumeHelper().selectLanguage("English","1");
-        app.getResumeHelper().addLanguage();
-        app.getResumeHelper().selectLanguage("Hebrew","2");
-
-        app.getResumeHelper().createFooterLinks("aasgsfg","asfgasgsf","asfgag");
-
-        app.getResumeHelper().createFooterInfo("dhadah");
-
-        app.getResumeHelper().submitCV_creation();
+        resume.clickCreateCV_button();
+        resume.openSkills();
+        resume.selectSkill("Java");
+        resume.selectSkill("PHP");
+        resume.selectSkill("Docker");
 
     }
 
     @Test
-    public void selectSkills() throws InterruptedException
+    public void selectLanguages()
     {
-        app.getResumeHelper().clickCreateCV_button();
-        Thread.sleep(2000);
-        app.getResumeHelper().openSkills();
-        Thread.sleep(2000);
-        app.getResumeHelper().selectSkill("Java");
-        Thread.sleep(2000);
-        app.getResumeHelper().selectSkill("PHP");
-        Thread.sleep(1000);
-        app.getResumeHelper().selectSkill("Docker");
-        Thread.sleep(1000);
-    }
+        ResumeHelper resume = app.getResumeHelper();
 
-    @Test
-    public void selectLanguages() throws InterruptedException {
-        app.getResumeHelper().clickCreateCV_button();
-        Thread.sleep(5000);
-        app.getResumeHelper().wd.findElement(By.xpath("//a[@aria-controls='languages']//i[@class='fas fa-chevron-circle-down']")).click();
+        resume.clickCreateCV_button();
+        resume.wd.findElement(By.xpath("//a[@aria-controls='languages']//i[@class='fas fa-chevron-circle-down']")).click();
+        resume.selectLanguage("English","1");
+        resume.addLanguage();
+        resume.selectLanguage("Greek","2");
+        resume.addLanguage();
+        resume.selectLanguage("Hebrew","3");
 
-        app.getResumeHelper().selectLanguage("English","1");
-        Thread.sleep(2000);
-
-        app.getResumeHelper().addLanguage();
-        Thread.sleep(2000);
-        app.getResumeHelper().selectLanguage("Greek","2");
-        Thread.sleep(2000);
     }
 
 }

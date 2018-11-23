@@ -1,5 +1,6 @@
 package cvbank.tests;
 
+import cvbank.manager.SessionHelper;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -18,16 +19,20 @@ public class TestLogin extends TestBase
     }
 
     @Test
-    public void candidateLoginPositiveTest() throws InterruptedException {
-        app.getSessionHelper().loginUser("brownDav2@gmail.com","browndav2");
+    public void candidateLoginPositiveTest()
+    {
+        SessionHelper login = app.getSessionHelper();
+        login.loginUser("brownDav2@gmail.com","browndav2");
 
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),'brownDav2@gmail.com')]")));
     }
 
     @Test
-    public void HRLoginPositiveTest() throws InterruptedException {
-        app.getSessionHelper().loginUser("hr1@yandex.com","hrtest1235");
+    public void HRLoginPositiveTest()
+    {
+        SessionHelper login = app.getSessionHelper();
+        login.loginUser("hr1@yandex.com","hrtest1235");
 
         Assert.assertTrue(app.getSessionHelper()
                 .isElementPresent(By.xpath("//ul[@class='menu-btns']//button[@type='button'][contains(text(),'hr1@yandex.com')]")));

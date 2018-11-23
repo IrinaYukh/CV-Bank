@@ -15,15 +15,12 @@ public class SessionHelper extends HelperBase
         wd.get(url);
     }
 
-    public void loginUser(String userName, String password) throws InterruptedException {
+    public void loginUser(String userName, String password)
+    {
         clickLoginButton();
-        Thread.sleep(1000);
         type(By.xpath("//input[@id='email']"),userName);
-        Thread.sleep(1000);
         type(By.xpath("//input[@id='password']"),password);
-        Thread.sleep(3000);
         click(By.xpath("//button[@type='submit']"));
-        Thread.sleep(5000);
         clickSuccessMessage();
     }
 
